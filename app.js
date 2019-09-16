@@ -1,4 +1,3 @@
-require('dotenv').config()
 const http = require('http')
 const express = require('express')
 const app = express()
@@ -39,31 +38,6 @@ app.get('/api/blogs', (request, response) => {
     })
 })
 
-app.put('/api/blogs/:id', (request, response) => {
-    const body = request.body
-
-    if (body.name === undefined) {
-      return response.status(400).json({ error: 'name is missing' })
-    }
-
-    if (body.title === undefined) {
-      return response.status(400).json({ error: 'title is missing' })
-    }
-
-    const blog = {
-      name: body.name,
-      number: body.number,
-    }
-
-    Blog.findByIdAndUpdate(request.params.id, blog, {new: true})
-    .then(updatedBlog => {
-      response.json(updatedPerson.toJSON())
-      })
-    .catch(error => {
-      console.log(error)
-    })
-    })
-
 app.post('/api/blogs', (request, response) => {
   const blog = new Blog(request.body)
 
@@ -74,7 +48,3 @@ app.post('/api/blogs', (request, response) => {
     })
 })
 
-const PORT = 3003
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`)
-})
