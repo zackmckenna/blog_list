@@ -13,7 +13,7 @@ const mongoUrl = process.env.MONGODB_URI
 
 mongoose.connect(mongoUrl, { useNewUrlParser: true })
   .then(result => {
-    logger.info('Connected to MongoDB')
+    logger.info('Connected to MongoDB', result)
   })
   .catch((error => {
     logger.info('error connecting to MongoDB:', error)
