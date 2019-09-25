@@ -15,7 +15,7 @@ beforeEach(async () => {
   await Promise.all(promiseArray)
 })
 
-describe('When there are initially notes saved', () => {
+describe('When there are initially blogs saved', () => {
 
   test('All blogs are returned', async () => {
     const response = await api.get('/api/blogs')
@@ -41,7 +41,7 @@ describe('When there are initially notes saved', () => {
     expect(response.body[0].id).toBeDefined()
   })
 })
-
+/*
 describe('POST request of a new note', () => {
   test('POST request adds a new blog post.', async () => {
     let blogToPost = new Blog(
@@ -96,6 +96,7 @@ describe('POST request of a new note', () => {
       .expect(400)
   })
 })
+*/
 
 describe('When GET requesting certain note.', () => {
   test('Request blog by id', async () => {
@@ -145,6 +146,18 @@ describe('When updating a blog', () => {
     await api
       .put(`/api/blogs/${blogToUpdate.id}`)
       .send(updatedBlog)
+
+    const blogsAfterUpdate = await helper.blogsInDb()
+
+    expect(blogsAfterUpdate[0].author).toBe(
+      "I'm Updated!"
+    )
+    expect(blogsAfterUpdate[0].title).toBe(
+      "Im a title"
+    )
+    expect(blogsAfterUpdate[0].url).toBe(
+      "Imaurl"
+    )
   })
 })
 
