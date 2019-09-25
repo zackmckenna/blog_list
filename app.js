@@ -8,14 +8,15 @@ const logger = require('./utils/logger')
 const blogsRouter = require('./controllers/blogs')
 const usersRouter = require('./controllers/users')
 const loginRouter = require('./controllers/login')
+const middleware = require('./utils/middleware')
 
 app.use(bodyParser.json())
-
+app.use(middleware.errorHandler)
 /*logger.info('connecting to', config.MONGODB_URI)*/
 
 const mongoUrl = process.env.MONGODB_URI
 
-mongoose.connect(mongoUrl, { useNewUrlParser: true })
+mongoose.connect(mongoUrl, { useUnifiedTopology: true, useNewUrlParser: true })
   .then(result => {
     logger.info('Connected to MongoDB', result)
   })
