@@ -1,0 +1,10 @@
+DELETE http://localhost:3003/api/blogs/5d8acee39b7a3b9ae89f5219
+content-type: application/json
+authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkNoYXJsaWUiLCJpZCI6IjVkOGI5NTcwOGY5MzU0ZjY1ZmM2YTM3ZCIsImlhdCI6MTU2OTQzMDg5NX0.QJeJXp7WZhOK0Y38V1MPWJxptwPKrMsJSkbpRT6EJxw
+
+{
+  "title": "Charlie 5",
+  "author": "Charlie the Fifth",
+  "url": "charlie.org",
+  "likes": 9
+}
